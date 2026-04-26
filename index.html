@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Rumbo · Consultoría de Alta Dirección</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="A Rumbo — Consultoría que transforma emprendimientos en empresas sólidas. Estrategia, gobierno corporativo, inteligencia de negocio e inteligencia artificial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F8F4ED;--ivory-soft:#FBF8F2;--sand:#E8DDC9;--line:#D9CFB8;
+    --gold:#A8814C;--gold-soft:#C8A66E;--ink:#1A1714;--ink-soft:#2A2520;
+    --graphite:#3D3530;--muted:#6B6259;--brand-blue:#1B4F9C;
+    --brand-blue-dark:#0F3870;--accent:#C56B3A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--ink-soft);background:var(--ivory);line-height:1.75;font-weight:300;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:1280px;margin:0 auto;padding:0 2.5rem}
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,244,237,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(168,129,76,.12);transition:all .4s ease}
+  nav .container{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem}
+  .logo-img{height:38px;width:auto;transition:opacity .3s}
+  .logo-img:hover{opacity:.75}
+  nav ul{display:flex;list-style:none;gap:2.6rem;align-items:center}
+  nav ul a{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:var(--graphite);transition:color .3s;position:relative}
+  nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .4s ease}
+  nav ul a:hover{color:var(--ink)}
+  nav ul a:hover::after{width:100%}
+  .hero{min-height:100vh;display:flex;align-items:center;background:var(--ivory);position:relative;overflow:hidden;padding-top:120px;padding-bottom:80px}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:1rem;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;font-weight:500}
+  .eyebrow::before{content:"";display:inline-block;width:36px;height:1px;background:var(--gold)}
+  .hero h1{font-size:clamp(3rem,5.4vw,5rem);margin-bottom:2rem;font-weight:300;color:var(--ink);letter-spacing:-.025em}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--ink);position:relative;display:inline-block}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.05em;height:1px;background:var(--gold)}
+  .hero p.lead{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--graphite);max-width:520px;margin-bottom:3rem;font-weight:300;line-height:1.55}
+  .btn-group{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:1.1rem 2.4rem;background:var(--ink);color:var(--ivory);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:all .4s ease}
+  .btn:hover{background:var(--brand-blue);transform:translateY(-1px)}
+  .btn-link{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:.4rem;transition:all .3s}
+  .btn-link:hover{color:var(--gold);border-color:var(--gold)}
+  .hero-image{position:relative;aspect-ratio:4/5;overflow:hidden;box-shadow:0 50px 100px -25px rgba(26,23,20,.45)}
+  .hero-image img{width:100%;height:100%;object-fit:cover;filter:contrast(1.08) brightness(.98);transition:transform 1.5s ease}
+  .hero-image:hover img{transform:scale(1.04)}
+  .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.05) 0%,rgba(26,23,20,.35) 100%);pointer-events:none}
+  .hero-caption{position:absolute;bottom:2rem;left:2rem;right:2rem;z-index:3;color:var(--ivory);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;line-height:1.4;border-left:2px solid var(--gold);padding-left:1.2rem}
+  .hero-caption small{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-top:.5rem;font-weight:500}
+  .manifesto{background:var(--ink);color:var(--ivory);padding:9rem 0;text-align:center;position:relative;overflow:hidden}
+  .manifesto::before{content:"";position:absolute;inset:0;background-image:url("brujula-bn.png");background-repeat:no-repeat;background-position:center;background-size:480px auto;opacity:.04;filter:invert(1)}
+  .manifesto .container{position:relative;z-index:2;max-width:920px}
+  .manifesto-mark{display:inline-block;margin-bottom:3rem}
+  .manifesto-mark::before,.manifesto-mark::after{content:"";display:inline-block;width:40px;height:1px;background:var(--gold);vertical-align:middle;margin:0 1rem}
+  .manifesto-mark span{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1rem;letter-spacing:.1em}
+  .manifesto h2{font-size:clamp(2rem,3.8vw,3.4rem);color:var(--ivory);font-weight:300;font-style:italic;line-height:1.3;margin-bottom:2.5rem}
+  .manifesto h2 strong{color:var(--gold-soft);font-style:normal;font-weight:500}
+  .manifesto p{color:rgba(248,244,237,.72);font-size:1.05rem;max-width:760px;margin:0 auto;font-weight:300}
+  section{padding:8rem 0;position:relative}
+  .section-eyebrow{display:inline-flex;align-items:center;gap:1rem;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:500}
+  .section-eyebrow::before{content:"";display:inline-block;width:36px;height:1px;background:var(--gold)}
+  .section-title{font-size:clamp(2.2rem,3.8vw,3.4rem);margin-bottom:1.5rem;font-weight:300;letter-spacing:-.02em}
+  .section-title em{font-style:italic;color:var(--gold)}
+  .section-lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--graphite);max-width:680px;margin-bottom:5rem;line-height:1.5}
+  .about{background:var(--ivory-soft)}
+  .about-grid{display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:start}
+  .about-intro{position:sticky;top:120px}
+  .about-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;line-height:1.5;color:var(--ink);padding-left:1.5rem;border-left:2px solid var(--gold)}
+  .about-text p{margin-bottom:1.6rem;color:var(--graphite);font-size:1.02rem;line-height:1.85}
+  .about-text strong{color:var(--ink);font-weight:500}
+  .about-signature{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem}
+  .about-signature .name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--ink);line-height:1}
+  .about-signature .title{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-top:.6rem}
+  .services{background:var(--ivory)}
+  .services-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .service-row{display:grid;grid-template-columns:80px 4fr 6fr 60px;gap:3rem;padding:2.6rem 0;border-bottom:1px solid var(--line);align-items:center;transition:all .4s ease;cursor:default;position:relative}
+  .service-row:hover{background:linear-gradient(90deg,transparent,rgba(168,129,76,.04),transparent)}
+  .service-row:hover .service-num{color:var(--gold)}
+  .service-row:hover .service-arrow{transform:translateX(8px);color:var(--gold)}
+  .service-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--muted);font-style:italic;transition:color .4s;letter-spacing:.05em}
+  .service-row h3{font-size:1.7rem;color:var(--ink);font-weight:400;line-height:1.2}
+  .service-row p{color:var(--muted);font-size:.95rem;line-height:1.7}
+  .service-arrow{text-align:right;color:var(--muted);font-size:1.4rem;transition:all .4s ease;font-family:'Cormorant Garamond',serif}
+  .insights{background:var(--ink-soft);color:var(--ivory)}
+  .insights .section-eyebrow{color:var(--gold-soft)}
+  .insights .section-title{color:var(--ivory)}
+  .insights .section-lead{color:rgba(248,244,237,.65)}
+  .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+  .insight-card{background:transparent;border-top:1px solid rgba(168,129,76,.3);padding:2.5rem 0 0;cursor:pointer;transition:all .4s ease;display:flex;flex-direction:column}
+  .insight-card:hover{border-color:var(--gold)}
+  .insight-card:hover h3{color:var(--gold-soft)}
+  .insight-card:hover .insight-arrow{transform:translateX(6px);color:var(--gold-soft)}
+  .insight-meta{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:500;display:flex;justify-content:space-between}
+  .insight-card h3{font-size:1.7rem;line-height:1.3;color:var(--ivory);margin-bottom:1.5rem;font-weight:400;transition:color .3s;flex-grow:1}
+  .insight-excerpt{color:rgba(248,244,237,.65);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
+  .insight-arrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(248,244,237,.7);transition:all .4s ease;letter-spacing:.05em}
+  .insight-arrow::after{content:" →";letter-spacing:0}
+  .contact{background:var(--ivory-soft)}
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:start}
+  .contact-info p{color:var(--graphite);margin-bottom:2.5rem;font-size:1.02rem;max-width:420px;line-height:1.8}
+  .contact-detail{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line)}
+  .contact-detail:last-of-type{border-bottom:none}
+  .contact-detail-label{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500;width:80px;flex-shrink:0}
+  .contact-detail a{color:var(--ink);font-size:1rem;transition:color .3s}
+  .contact-detail a:hover{color:var(--gold)}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  form .full{grid-column:span 2}
+  form label{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;font-weight:500}
+  form input,form textarea{width:100%;padding:.9rem 0;background:transparent;border:none;border-bottom:1px solid var(--line);font-family:inherit;font-size:1rem;color:var(--ink);transition:all .3s}
+  form input:focus,form textarea:focus{outline:none;border-bottom-color:var(--ink)}
+  form textarea{min-height:80px;resize:vertical}
+  form button{grid-column:span 2;justify-self:start;margin-top:1.5rem}
+  footer{background:var(--ink);color:rgba(248,244,237,.55);padding:5rem 0 2rem;text-align:center}
+  .footer-logo{height:42px;margin:0 auto 2rem;display:block;opacity:.85}
+  .footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:rgba(248,244,237,.7);margin-bottom:3rem}
+  .footer-divider{width:1px;height:50px;background:var(--gold);margin:0 auto 2.5rem;opacity:.6}
+  .footer-meta{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding-top:2.5rem;border-top:1px solid rgba(248,244,237,.08);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+  .modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(26,23,20,.92);backdrop-filter:blur(10px);align-items:flex-start;justify-content:center;padding:5rem 2rem;overflow-y:auto}
+  .modal-overlay.active{display:flex}
+  .modal{background:var(--ivory);max-width:780px;width:100%;padding:4rem 4rem 3rem;position:relative;border-top:3px solid var(--gold)}
+  .modal-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:color .3s}
+  .modal-close:hover{color:var(--ink)}
+  .modal .insight-meta{color:var(--gold);margin-bottom:1.5rem}
+  .modal h2{font-size:2.2rem;margin-bottom:2rem;font-weight:400;line-height:1.2}
+  .modal p{color:var(--graphite);margin-bottom:1.4rem;font-size:1.02rem;line-height:1.85}
+  .modal p:first-of-type{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--ink);line-height:1.55;border-left:2px solid var(--gold);padding-left:1.5rem;margin-bottom:2rem}
+  .modal-author{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--line);font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink)}
+  .modal-author small{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.4rem;font-weight:500}
+  @media(max-width:980px){
+    .hero{padding-top:130px}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:4rem}
+    .insights-grid{grid-template-columns:1fr;gap:1rem}
+    .insight-card{padding:2rem 0}
+    .service-row{grid-template-columns:50px 1fr 30px;gap:1.5rem}
+    .service-row p{display:none}
+    nav ul{gap:1.2rem}
+    nav ul li:not(:last-child):not(:first-child){display:none}
+    .container{padding:0 1.5rem}
+    nav .container{padding:1rem 1.5rem}
+    section{padding:5rem 0}
+    .modal{padding:3rem 2rem 2rem}
+    .about-intro{position:static}
+    form{grid-template-columns:1fr}
+    form .full,form button{grid-column:span 1}
+    .hero-image{aspect-ratio:3/4;max-width:500px;margin:0 auto}
+  }
+</style>
+<style>
+  /* Botón hamburguesa: invisible en desktop */
+  .nav-toggle{
+    display:none;
+    background:transparent;
+    border:0;
+    width:38px;
+    height:38px;
+    padding:0;
+    cursor:pointer;
+    position:relative;
+    z-index:1100;
+  }
+  .nav-toggle span{
+    display:block;
+    width:24px;
+    height:1.5px;
+    background:var(--ink);
+    margin:5px auto;
+    transition:transform .35s ease, opacity .25s ease;
+    transform-origin:center;
+  }
+  .nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  @media (max-width:980px){
+    /* Anula la regla anterior que escondía items intermedios */
+    nav ul li:not(:last-child):not(:first-child){display:flex !important}
+
+    .nav-toggle{display:block}
+
+    nav ul{
+      position:fixed;
+      top:0; left:0; right:0;
+      background:rgba(248,244,237,.98);
+      backdrop-filter:blur(20px);
+      flex-direction:column;
+      gap:0;
+      padding:6rem 2rem 2.5rem;
+      border-bottom:1px solid rgba(168,129,76,.18);
+      transform:translateY(-100%);
+      transition:transform .45s cubic-bezier(.2,.7,.2,1);
+      z-index:1050;
+    }
+    nav ul.open{transform:translateY(0)}
+
+    nav ul li{
+      width:100%;
+      border-top:1px solid rgba(168,129,76,.15);
+    }
+    nav ul li:first-child{border-top:0}
+
+    nav ul a{
+      display:block;
+      padding:1.2rem 0;
+      font-size:.95rem;
+      letter-spacing:.22em;
+      color:var(--ink);
+    }
+    nav ul a::after{display:none}
+
+    /* Bloquea el scroll del body cuando el menú está abierto */
+    body.nav-open{overflow:hidden}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#inicio"><img src="logo-color.png" alt="A Rumbo" class="logo-img"></a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul id="navMenu">
+      <li><a href="#about">Firma</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#insights">Perspectivas</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+
+  <style>
+    /* Overrides locales del hero — solo afectan a esta sección */
+    .hero{
+      background-image:url('timon-bn.jpg');
+      background-size:cover;
+      background-position:center right;
+      background-repeat:no-repeat;
+      position:relative;
+      isolation:isolate;
+      /* Permite que el hero crezca si el contenido es alto */
+      min-height:100vh;
+      padding-top:130px;
+      padding-bottom:60px;
+      align-items:center;
+    }
+    /* Capa de tono cálido para integrar la foto a la paleta ivory */
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(90deg,
+        rgba(248,244,237,.97) 0%,
+        rgba(248,244,237,.92) 38%,
+        rgba(248,244,237,.55) 62%,
+        rgba(248,244,237,.18) 100%);
+      z-index:1;
+    }
+    /* Sutil viñeta inferior */
+    .hero::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 70%,rgba(26,23,20,.08) 100%);
+      z-index:1;pointer-events:none;
+    }
+    .hero .container{position:relative;z-index:2;width:100%}
+    .hero-grid{grid-template-columns:6fr 6fr;gap:3rem}
+    .hero-text{max-width:620px}
+    .hero h1{margin-bottom:1.6rem}
+    .hero p.lead{margin-bottom:2rem}
+    .hero-quote{
+      margin-top:2.2rem;
+      padding-left:1.2rem;
+      border-left:2px solid var(--gold);
+      max-width:520px;
+    }
+    .hero-quote p{
+      font-family:'Cormorant Garamond',serif;
+      font-style:italic;
+      font-size:1.1rem;
+      line-height:1.5;
+      color:var(--graphite);
+      margin:0;
+    }
+    .hero-quote small{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-style:normal;
+      font-size:.7rem;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-top:.6rem;
+      font-weight:500;
+    }
+    /* Pantallas no muy altas: dejar que crezca */
+    @media (max-height:820px) and (min-width:981px){
+      .hero{min-height:auto;padding-top:140px;padding-bottom:80px}
+      .hero h1{font-size:clamp(2.4rem,4.4vw,3.8rem)}
+    }
+    @media(max-width:980px){
+      .hero{
+        background-position:center right -120px;
+        min-height:auto;
+        padding-top:130px;
+        padding-bottom:80px;
+      }
+      .hero::before{
+        background:linear-gradient(180deg,
+          rgba(248,244,237,.97) 0%,
+          rgba(248,244,237,.88) 60%,
+          rgba(248,244,237,.55) 100%);
+      }
+      .hero-grid{grid-template-columns:1fr}
+      .hero-quote{margin-top:2rem}
+    }
+  </style>
+
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Consultoría de Alta Dirección</span>
+      <h1>Trazamos el rumbo de las empresas que <em>perduran</em>.</h1>
+      <p class="lead">Acompañamos a líderes y empresas familiares en el tránsito desde el emprendimiento hacia organizaciones sólidas, sostenibles y construidas para durar.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn">Iniciar conversación</a>
+        <a href="#services" class="btn-link">Ver servicios</a>
+      </div>
+
+      <div class="hero-quote">
+        <p>"El verdadero arte de navegar no consiste en evitar la tormenta, sino en llegar al destino."</p>
+        <small>— Filosofía A Rumbo</small>
+      </div>
+    </div>
+    <div aria-hidden="true"></div>
+  </div>
+
+</section>
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-mark"><span>Nuestra convicción</span></div>
+    <h2>"Los emprendimientos prueban el modelo. <strong>La empresa lo sostiene en el tiempo.</strong>"</h2>
+    <p>Los emprendimientos son formas flexibles de organización, ideales para validar y ajustar la propuesta de valor en su fase inicial. Una vez consolidada, el negocio debe transitar hacia un modelo empresarial con sistemas de gestión coherentes y alineados a su estrategia, otorgando sostenibilidad independiente de quién lo dirija en el tiempo.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-intro">
+      <span class="section-eyebrow">La firma</span>
+      <h2 class="section-title">Una red al servicio del propósito empresarial.</h2>
+      <p class="about-quote">"La experiencia ejecutiva, puesta al servicio de quienes construyen empresas con horizonte de largo plazo."</p>
+    </div>
+    <div class="about-text">
+      <p><strong>A Rumbo</strong> es una consultora organizada como una red multidisciplinaria de profesionales que se desempeñan o han desempeñado en cargos empresariales de alta dirección. A través de consultorías y mentorías, compartimos experiencia y conocimiento para resolver las cuestiones propias de los negocios y de los entornos en que se desenvuelven.</p>
+      <p>La red es gestionada por <strong>Pedro Montero</strong>, Ingeniero Civil Informático y Magíster en Administración de Empresas, con más de 30 años liderando equipos multidisciplinarios y diseñando estrategias corporativas y proyectos de innovación para empresas del sector público y privado en Chile y Latinoamérica.</p>
+      <p>Su trayectoria abarca cargos directivos, gerenciales y de jefaturas de proyectos en diversos ámbitos: planificación estratégica e inteligencia de negocio, evaluación de propuestas de valor, fusiones y reestructuraciones, sistemas de gestión de calidad, riesgo y seguridad de la información, transformación digital y plataformas tecnológicas.</p>
+      <p>Actualmente se dedica a la asesoría y mentoría en <strong>inteligencia de negocio</strong> y a la <strong>aplicación de inteligencia artificial</strong> para mejorar el desempeño empresarial.</p>
+      <div class="about-signature">
+        <div>
+          <div class="name">Pedro Montero</div>
+          <div class="title">Director · Fundador</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1.05rem">Ingeniero Civil · MBA</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SERVICIOS -->
+<section class="services" id="services">
+  <div class="container">
+    <span class="section-eyebrow">Áreas de especialización</span>
+    <h2 class="section-title">Disciplinas en las que <em>navegamos contigo</em>.</h2>
+    <p class="section-lead">Acompañamos a la organización en los desafíos críticos de su consolidación, escalamiento y transformación.</p>
+
+    <style>
+      .services-grid{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:1.5rem;
+      }
+      .service-card{
+        background:var(--ivory-soft);
+        border:1px solid var(--line);
+        padding:2.6rem 2.2rem;
+        display:flex;
+        flex-direction:column;
+        transition:transform .4s ease, border-color .4s ease, background .4s ease;
+        position:relative;
+      }
+      .service-card:hover{
+        transform:translateY(-3px);
+        border-color:var(--gold);
+        background:#fff;
+      }
+      .service-card .num{
+        font-family:'Cormorant Garamond',serif;
+        font-style:italic;
+        font-size:2.4rem;
+        color:var(--gold);
+        line-height:1;
+        letter-spacing:.02em;
+        margin-bottom:1.4rem;
+      }
+      .service-card h3{
+        font-size:1.4rem;
+        color:var(--ink);
+        font-weight:500;
+        margin-bottom:1rem;
+        line-height:1.25;
+      }
+      .service-card p{
+        color:var(--muted);
+        font-size:.95rem;
+        line-height:1.7;
+        margin:0;
+      }
+      @media(max-width:980px){
+        .services-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}
+        .service-card{padding:2.2rem 1.8rem}
+      }
+      @media(max-width:640px){
+        .services-grid{grid-template-columns:1fr}
+      }
+    </style>
+
+    <div class="services-grid">
+
+      <article class="service-card">
+        <div class="num">01</div>
+        <h3>Empresas Familiares</h3>
+        <p>Integración funcional de los sistemas familia y empresa, con estructuras de gobierno que aseguran la continuidad y cohesión en el tiempo.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">02</div>
+        <h3>Estrategia y Dirección</h3>
+        <p>Definición de estrategia corporativa, modelos de negocio y planes de crecimiento sostenible, con foco ejecutivo y horizonte de largo plazo.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">03</div>
+        <h3>Gobierno Corporativo</h3>
+        <p>Diseño y fortalecimiento de directorios, comités y órganos de gobierno que ordenan la toma de decisiones en empresas y empresas familiares.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">04</div>
+        <h3>Transformación Organizacional</h3>
+        <p>Rediseño de estructuras, procesos y modelos operativos para alinear la organización con su estrategia y prepararla para escalar.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">05</div>
+        <h3>Liderazgo y Equipos</h3>
+        <p>Desarrollo de equipos directivos de alto desempeño, mentoría ejecutiva y planes de sucesión que aseguran continuidad del liderazgo.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">06</div>
+        <h3>Personas y Cultura</h3>
+        <p>Sistemas de gestión de personas, cultura y liderazgo coherentes con la estrategia y los valores que la organización quiere preservar.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">07</div>
+        <h3>Inteligencia de Negocio</h3>
+        <p>Tableros, indicadores y analítica para que la dirección decida con datos confiables y oportunos, no con intuición.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="num">08</div>
+        <h3>Inteligencia Artificial Aplicada</h3>
+        <p>Identificación de casos de uso de IA con impacto real en productividad, costos e innovación, con mirada ejecutiva.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- PERSPECTIVAS / INSIGHTS -->
+<section class="insights" id="insights">
+  <div class="container">
+    <span class="section-eyebrow">Perspectivas</span>
+    <h2 class="section-title">Reflexiones desde la <em>alta dirección</em>.</h2>
+    <p class="section-lead">Una mirada sobre estrategia, gobierno y empresa familiar, escrita desde la experiencia ejecutiva.</p>
+
+    <div class="insights-grid">
+
+      <article class="insight-card" onclick="abrirArticulo('amb')">
+        <div class="insight-meta"><span>Empresas Familiares</span><span>04 min</span></div>
+        <h3>Ámbitos de Gestión de la Empresa Familiar</h3>
+        <p class="insight-excerpt">Los procesos más exitosos son los que integran las distintas perspectivas y desarrollan una gestión multidisciplinaria de la empresa familiar.</p>
+        <span class="insight-arrow">Leer</span>
+      </article>
+
+      <article class="insight-card" onclick="abrirArticulo('gest')">
+        <div class="insight-meta"><span>Empresas Familiares</span><span>03 min</span></div>
+        <h3>La Gestión de la Empresa Familiar</h3>
+        <p class="insight-excerpt">Existe un prejuicio que identifica a las empresas familiares como "problemáticas". La evidencia empírica demuestra lo contrario.</p>
+        <span class="insight-arrow">Leer</span>
+      </article>
+
+      <article class="insight-card" onclick="abrirArticulo('conc')">
+        <div class="insight-meta"><span>Empresas Familiares</span><span>01 min</span></div>
+        <h3>La concepción de la empresa da sentido a su gestión familiar</h3>
+        <p class="insight-excerpt">La manera como la familia concibe su empresa es fundamental para identificar las soluciones que pueden funcionar para gestionarla.</p>
+        <span class="insight-arrow">Leer</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+
+    <div class="contact-info">
+      <span class="section-eyebrow">Contacto</span>
+      <h2 class="section-title">Conversemos.</h2>
+      <p>Cuéntanos hacia dónde quiere navegar tu empresa. Estudiamos tu caso y te proponemos un primer encuentro sin compromiso.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-label">Email</div>
+        <a href="mailto:contacto@arumbo.cl">contacto@arumbo.cl</a>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Teléfono</div>
+        <a href="tel:+56957591944">+56 9 5759 1944</a>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/pedro-montero" target="_blank" rel="noopener">/in/pedro-montero</a> <!-- EDITAR -->
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Ubicación</div>
+        <a>Santiago, Chile</a>
+      </div>
+    </div>
+
+    <form id="formContacto" onsubmit="enviarFormulario(event)">
+      <div>
+        <label for="f-nombre">Nombre</label>
+        <input type="text" id="f-nombre" name="nombre" required>
+      </div>
+      <div>
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" required>
+      </div>
+      <div class="full">
+        <label for="f-empresa">Empresa</label>
+        <input type="text" id="f-empresa" name="empresa">
+      </div>
+      <div class="full">
+        <label for="f-mensaje">Mensaje</label>
+        <textarea id="f-mensaje" name="mensaje" required></textarea>
+      </div>
+      <button type="submit" class="btn">Enviar mensaje</button>
+      <p id="formMsg" class="full" style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);min-height:1.2em;margin-top:.5rem"></p>
+    </form>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <img src="logo-color.png" alt="A Rumbo" class="footer-logo" style="filter:brightness(0) invert(1)">
+    <p class="footer-tagline">"El verdadero arte de navegar no consiste en evitar la tormenta, sino en llegar al destino."</p>
+    <div class="footer-divider"></div>
+    <div class="footer-meta">
+      <span>© <span id="anio"></span> A Rumbo</span>
+      <span>Consultoría de Alta Dirección</span>
+      <span>Santiago · Chile</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL ARTÍCULOS -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" onclick="cerrarArticulo()" aria-label="Cerrar">×</button>
+    <div id="modalContenido"></div>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+  // Toggle del menú móvil
+(function(){
+  const btn  = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  if(!btn || !menu) return;
+
+  function toggle(force){
+    const willOpen = typeof force === 'boolean'
+      ? force
+      : !menu.classList.contains('open');
+    menu.classList.toggle('open', willOpen);
+    btn.classList.toggle('open', willOpen);
+    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    btn.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+    document.body.classList.toggle('nav-open', willOpen);
+  }
+
+  btn.addEventListener('click', () => toggle());
+
+  // Cerrar al hacer click en cualquier link
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => toggle(false));
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && menu.classList.contains('open')) toggle(false);
+  });
+
+  // Si el usuario gira el dispositivo a desktop, cerrar
+  window.addEventListener('resize', () => {
+    if(window.innerWidth > 980 && menu.classList.contains('open')) toggle(false);
+  });
+})();
+  // Año dinámico
+  document.getElementById('anio').textContent = new Date().getFullYear();
+
+  // Artículos: texto COMPLETO Y LITERAL extraído de www.arumbo.cl
+  const articulos = {
+    amb: {
+      meta: 'Empresas Familiares · 04 min · 8 julio 2019',
+      titulo: 'Ámbitos de Gestión de la Empresa Familiar',
+      cuerpo: `
+        <p>La gestión de la empresa familiar ha sido tema de estudio de múltiples áreas del conocimiento. Ello en el afán de entender y establecer un modelo de gestión que cubra y caracterice los aspectos más significativos de este tipo de empresas. Particularmente, porque en el entorno actual de los negocios, muchas de ellas constituyen un modelo o paradigma a seguir por otro tipo de organización. Sin embargo, ninguna disciplina —por sí sola— ha sido capaz de establecer un modelo de gestión eficaz para resolver todos los aspectos relevantes que surgen de la interacción entre empresa y familia. Los procesos más exitosos han sido aquellos que integran las distintas perspectivas y desarrollan una gestión multidisciplinaria de la empresa familiar. ¿Por qué?</p>
+        <p>El enfoque más tradicional en que se ha orientado la gestión de la empresa familiar se relaciona con su carácter de "problemática". Aquellos que sostienen esta tesis, consideran que el problema surge al momento de la sucesión y por tanto, que la gestión de la empresa familiar debe orientarse a planificar ese acontecimiento y así evitar el conflicto. Este camino de acción ha presentado tres inconvenientes:</p>
+        <p>i) <strong>la anticipación</strong>. Tratar de prever y anticiparse a los diferentes contextos por los que puede atravesar la familia y/o la empresa es prácticamente imposible. Enfermedades, divorcios, fallecimientos o simplemente la velocidad de cambio que han impuesto las tecnologías de información a los negocios hacen que exista un permanente estado de incertidumbre;</p>
+        <p>ii) <strong>la continuidad</strong>. Pensar que el sucesor debe ser un continuador de la obra del fundador es cuestionable. El dinamismo de los negocios requiere adecuaciones de liderazgo, estrategias, desarrollo organizacional y a veces del mismo modelo de negocio, para mantener vigente y hacer sostenible el crecimiento de la compañía;</p>
+        <p>iii) <strong>el traspaso</strong>. Suponer que la sucesión es un evento puntual —como la entrega del testimonio en una posta— y no un proceso, donde muchas veces las distintas generaciones conviven por un tiempo importante dentro de la compañía.</p>
+        <p>Dado que en muchos casos la planificación de la sucesión no ha sido una solución efectiva para mitigar el llamado "problema de la empresa familiar", un segundo ámbito de intervención se ha desarrollado de la mano de los abogados: si no podemos planificar, entonces debemos establecer reglas que den orden y eviten conflictos hacia el futuro. Así surgió el llamado <strong>Protocolo Familiar</strong>. Este documento norma el trabajo de familiares en la empresa, los valores que caracterizan a la familia, los sistemas de gobierno familiar, la propiedad de la compañía y mecanismos de mediación de conflictos, entre otros.</p>
+        <p>Es indudable que abordar estas temáticas antes de que los problemas sucedan es altamente conveniente. Genera tranquilidad, posibilita la comunicación y la materialización de acuerdos en temas que en otra instancia son difíciles de tratar. No obstante, su efectividad también está puesta en tela de juicio. Principalmente porque los acuerdos alcanzados representan "lo socialmente esperado" y no reflejan —auténticamente— los intereses, pasiones y ambiciones legítimas de cada miembro de la familia. A su vez, suponer que el sólo hecho de que algo esté normado garantiza su cumplimiento, es un error. Basta con observar lo que ocurre con la ley de tránsito para entender que por sí sola no es suficiente.</p>
+        <p>Si las decisiones no se pueden planificar o protocolizar —por lo explicado en los párrafos precedentes— entonces se debe contar con estructuras de gobierno que soporten cada tipo de decisión. Este ámbito de gestión se desarrolla bajo el concepto de <strong>Gobierno de la Empresa Familiar</strong>. Su estructura determina cuándo, cómo y en qué órgano de gobierno se toman las decisiones importantes que afectan a la empresa y a la familia. Este ámbito ha mostrado ser más efectivo y ordenado; sin embargo, requiere que se den ciertas condiciones —tanto en la empresa como en la familia— para que resulte eficaz o de lo contrario existe el riesgo de que las estructuras se vuelvan más ceremoniales que funcionales. Una de estas condiciones es la capacidad de comunicación de los miembros de la familia para separar temas y ceñirse al rol que le compete en cada órgano de gobierno.</p>
+        <p>Tan relevante es la perspectiva comunicacional que se ha convertido —por sí sola— en otro ámbito de gestión de la empresa familiar. Su esfuerzo radica en que los miembros de la familia aprendan a tener conversaciones difíciles y la capacidad para resolver y gestionar conflictos. La evidencia empírica ha demostrado que existe una fuerte correlación entre la falta de comunicación y la ocurrencia de problemas. La complejidad que presenta el desarrollo de este ámbito, es que de manera espontánea el diálogo tiende a focalizarse en los aspectos de la empresa por sobre los relacionados con la familia, generando un desequilibrio comunicacional.</p>
+        <p>Otro enfoque de gestión de la empresa familiar, es el de la <strong>profesionalización</strong>. Este eje de desarrollo hace énfasis en las condiciones organizacionales requeridas para la sostenibilidad de la empresa en el tiempo. El problema de este ámbito, radica en que ciertas decisiones familiares o empresariales impactan —indivisiblemente— en ambos contextos y por tanto no se puede gestionar uno sin considerar el otro.</p>
+        <p>Entender la gestión de la empresa familiar, pasa por reconocer que todos estos ámbitos son complementarios y generan impacto y refuerzo recíproco: una buena comunicación favorece la adopción de estructuras de gobierno. Recíprocamente, la existencia de estructuras de gobierno favorece el aprendizaje comunicacional en los miembros de la familia. De igual manera, la existencia de reglas y acuerdos a través de un protocolo establece un marco conductual y procedimental que favorece la interacción y mitiga las posibilidades de conflicto. Por último, un mayor nivel de profesionalización de la empresa favorece la generación de información para apoyar la toma de decisiones en los diferentes órganos de gobierno corporativo.</p>
+        <p>Un enfoque interrelacionado es la forma correcta de abordar la gestión de la empresa familiar. El énfasis en uno u otro ámbito, como el adecuado nivel de desarrollo de cada uno, dependerá de las particularidades de la familia y la empresa.</p>
+      `
+    },
+    gest: {
+      meta: 'Empresas Familiares · 03 min · 9 julio 2019',
+      titulo: 'La Gestión de la Empresa Familiar',
+      cuerpo: `
+        <p>Existe un prejuicio instalado en el ámbito empresarial que identifica a las empresas familiares como "problemáticas": "Si usted tiene una empresa familiar, va a tener problemas". La evidencia empírica ha demostrado que este prejuicio, no sólo es equivocado, sino que las empresas familiares tienen un mejor índice de supervivencia, competitividad y resistencia que las otras.</p>
+        <p>Esta forma errada de pensar la empresa familiar tiene su origen en una mirada simplista y peyorativa, que supone que la única forma posible de desarrollo de una compañía es hacia su cotización en el mercado bursátil. Como si fuese el fin obligado de toda empresa, tener que alcanzar dicho estatus o de lo contrario será considerada como de segunda categoría.</p>
+        <p>Basta con observar los grandes grupos económicos mundiales o locales, para reconocer que en su gran mayoría corresponden a empresas familiares, donde al menos el control (de manera directa o indirecta) le pertenece a una familia. Por otro lado, aunar los intereses de los propietarios y de la empresa no es un ámbito de gestión exclusivo de la empresa familiar. Pensar que el gerente general de una sociedad anónima se puede desentender de la relación con los accionistas de la empresa (propietarios) es un absurdo. Tanto en una empresa familiar como en una cotizada en bolsa, los intereses de los propietarios constituyen un ámbito que debe gestionarse correctamente.</p>
+        <p>En este sentido, mientras en una empresa tranzada en bolsa, la complejidad de la gestión será la interacción con propietarios impersonales, en el caso de la empresa familiar será la <strong>integración funcional de dos sistemas de naturaleza distinta</strong>: la familia y la empresa.</p>
+        <p>En efecto, mientras en el sistema <strong>Familia</strong> el objetivo primordial es el desarrollo y socialización de sus miembros —condición que se adquiere por el solo hecho de haber nacido en la familia— y en donde el criterio de justicia viene dado por el trato igualitario o por las necesidades de sus miembros; en el sistema <strong>Empresa</strong> el foco es la elaboración de bienes y/o servicios y la permanencia de una persona está condicionada a su contribución de valor en la generación de dichos bienes y/o servicios. A su vez, el criterio de justicia en este último sistema se basa en el mérito. Es decir, en la Familia la persona es un fin en sí mismo, mientras que en la Empresa es un medio para alcanzar un determinado fin.</p>
+        <p>Llevado a un ámbito específico, cuando un padre se ve en la necesidad de tener que contratar a un ejecutivo para su empresa, ¿a qué sistema debe ceñirse? ¿Al sistema Familia que le exige la seguridad y protección de sus hijos o al sistema Empresa que le exige contratar a la persona más idónea para ocupar el cargo? La respuesta a esta disyuntiva dependerá del modelo mental de la familia (forma de entender la realidad) y del fin que cumple la empresa para ellos. No hay una respuesta correcta preconcebida. Incluso para la misma familia, la respuesta puede variar en el tiempo debido a factores propios de su evolución (fallecimientos, enfermedades, matrimonios, el ciclo de vida en que se encuentra cada uno de sus miembros…) o externos a ella (complejidades propias del negocio).</p>
+        <p>Dado que no es posible predecir el futuro de la familia y ni el de la empresa, se hace necesario establecer estructuras de gestión que definan cómo, dónde y quiénes tomarán las decisiones que afectan indivisiblemente a ambos sistemas.</p>
+        <p>De eso se trata la gestión de la empresa familiar: analizar las complejidades propias del contexto de cada sistema, familia y empresa, poner orden e implementar soluciones <strong>eficaces</strong> (sólo hasta el nivel de desarrollo requerido) y <strong>eficientes</strong> (de la manera más fácil posible) para disminuir el riesgo estructural que se produce en la interacción de ambos.</p>
+      `
+    },
+    conc: {
+      meta: 'Empresas Familiares · 01 min · 31 julio 2019',
+      titulo: 'La concepción de la empresa es lo que da sentido a la solución de gestión de la empresa familiar',
+      cuerpo: `
+        <p>La manera como la familia concibe su empresa es fundamental para identificar las soluciones que pueden aplicarse y funcionar para gestionar la empresa familiar.</p>
+        <p>Al interior de la familia pueden coexistir diferentes intereses respecto de la función que cumple la empresa. Para algunos puede significar seguridad laboral, para otros una forma de trascendencia, de adquirir poder o simplemente una forma de generar rentabilidad financiera.</p>
+        <p>Lo mismo ocurre con la orientación que debería tener la empresa respecto del valor económico que ella genera. Algunos tendrán preferencia por la creación de valor a través del crecimiento de la empresa o de nuevos emprendimientos, otros, por la conservación del patrimonio a través de fondos de inversión de bajo riesgo y finalmente estarán quienes preferirán una distribución de valor por medio de actividades filantrópicas o proyectos de impacto social. Todas legítimas y no excluyentes entre sí.</p>
+        <p>Reconocer los intereses y preferencias individuales de cada integrante de la familia y no sólo el interés familiar predominante, es la forma de lograr mayor identificación, compromiso, involucramiento y cohesión entorno al proyecto de empresa familiar. El alineamiento de las "agendas privadas" permitirá dar sentido a las herramientas que ordenarán la interacción entre familia y empresa.</p>
+        <p>Un buen diagnóstico de estos aspectos, sumado al análisis de las complejidades propias del entorno familiar, de la empresa y de las estructuras que soportan las decisiones, permitirá diseñar una estrategia efectiva y eficiente para gestionar la empresa familiar.</p>
+      `
+    }
+  };
+
+  // Abrir/cerrar modal
+  function abrirArticulo(id){
+    const a = articulos[id];
+    if(!a) return;
+    document.getElementById('modalContenido').innerHTML =
+      `<div class="insight-meta"><span>${a.meta}</span></div>
+       <h2>${a.titulo}</h2>
+       ${a.cuerpo}
+       <div class="modal-author">Pedro Montero<small>Director · A Rumbo</small></div>`;
+    const m = document.getElementById('modal');
+    m.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarArticulo(){
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Cerrar con clic fuera y con Escape
+  document.getElementById('modal').addEventListener('click', e => {
+    if(e.target.id === 'modal') cerrarArticulo();
+  });
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') cerrarArticulo();
+  });
+
+  // Envío de formulario (placeholder — conectar a Formspree, EmailJS o backend)
+  function enviarFormulario(e){
+    e.preventDefault();
+    const msg = document.getElementById('formMsg');
+    msg.textContent = 'Gracias. Te responderemos a la brevedad.';
+    e.target.reset();
+    // TODO: integrar envío real (ej. Formspree: action="https://formspree.io/f/XXXX")
+  }
+</script>
+
+</body>
+</html>
